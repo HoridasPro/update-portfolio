@@ -36,7 +36,6 @@ import {
   SiFigma,
   SiPostman,
 } from "react-icons/si";
-import { FaXTwitter } from "react-icons/fa6";
 import myImg from "../assets/300x300.jpg";
 
 // --- Animation Variants ---
@@ -245,6 +244,15 @@ const Portfolio = () => {
     about:
       "Hi! I'm Haridas Sarker, a passionate MERN Stack Developer with a love for building modern, scalable, and interactive web applications. Since 2021, I have been exploring MongoDB, Express.js, React, and Node.js to bring ideas to life with clean, performant code.",
     projects: [
+      {
+        title: "Food Delivery Platform",
+        description:
+          "A full-stack MERN food delivery application with real-time order updates and smooth user interface",
+        techStack: ["Next.js", "MongoDB", "Tailwind CSS", "NextAuth"],
+        github: "https://github.com/HoridasPro/quickbite",
+        link: "https://endgame-quickbite.vercel.app",
+        image: "https://i.postimg.cc/yNH84s9Y/Screenshot-2026-04-17-232415.png",
+      },
       {
         title: "PawMart",
         description:
