@@ -241,7 +241,7 @@ const Portfolio = () => {
     phone: "+880 1816553754",
     // whatsapp: "+8801816553754",
     resumeLink:
-      "https://drive.google.com/file/d/1XcJuRCcWA1EPWho3GqDf9Y92jhnUbzhS/view?usp=sharing",
+      "https://drive.google.com/file/d/10VS4UHcQVaN3WC5XVRZp7gmzpry4iO2A/view?usp=sharing",
     about:
       "Hi! I'm Haridas Sarker, a passionate MERN Stack Developer with a love for building modern, scalable, and interactive web applications. Since 2021, I have been exploring MongoDB, Express.js, React, and Node.js to bring ideas to life with clean, performant code.",
     projects: [
