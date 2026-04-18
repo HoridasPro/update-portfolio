@@ -228,7 +228,7 @@ const Portfolio = () => {
   const [activeNav, setActiveNav] = useState("home");
 
   const roles = [
-    "MERN Stack Developer",
+    "Full Stack Developer",
     "React Specialist",
     "Full Stack Enthusiast",
     "Backend Architect",
@@ -238,7 +238,6 @@ const Portfolio = () => {
     name: "Haridas Sarker",
     email: "horidassarker6@gmail.com",
     phone: "+880 1816553754",
-    // whatsapp: "+8801816553754",
     resumeLink:
       "https://drive.google.com/file/d/10VS4UHcQVaN3WC5XVRZp7gmzpry4iO2A/view?usp=sharing",
     about:
@@ -247,7 +246,7 @@ const Portfolio = () => {
       {
         title: "Food Delivery Platform",
         description:
-          "A full-stack MERN food delivery application with real-time order updates and smooth user interface",
+          "A full-stack food delivery application with real-time order updates and smooth user interface",
         techStack: ["Next.js", "MongoDB", "Tailwind CSS", "NextAuth"],
         github: "https://github.com/HoridasPro/quickbite",
         link: "https://endgame-quickbite.vercel.app",
@@ -457,7 +456,7 @@ const Portfolio = () => {
               Available for Hire
             </motion.div>
             <h1 className="text-4xl font-black text-white leading-[1.1] mb-6 tracking-tighter">
-              MERN{" "}
+              Full{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 italic">
                 Stack Developer
               </span>
@@ -569,7 +568,7 @@ const Portfolio = () => {
                   </p>
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="text-emerald-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2"
+                    className="text-emerald-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 cursor-pointer"
                   >
                     View Details <FaArrowRight />
                   </button>
