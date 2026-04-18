@@ -24,6 +24,9 @@ import {
   FaRocket,
   FaDownload,
   FaArrowRight,
+  FaUserLock,
+  FaServer,
+  FaBolt,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -34,9 +37,11 @@ import {
   SiFirebase,
   SiGit,
   SiFigma,
-  SiPostman,
+  SiNextdotjs,
+  SiGithub,
 } from "react-icons/si";
 import myImg from "../assets/300x300.jpg";
+import { VscVscode } from "react-icons/vsc";
 
 // --- Animation Variants ---
 const modalContentVariants = {
@@ -142,7 +147,7 @@ const ProjectModal = ({ project, onClose }) => {
       >
         <button
           onClick={onClose}
-          className="absolute top-8 right-8 p-3 bg-slate-950/50 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-500 z-20 transition-all"
+          className="absolute top-8 right-8 p-3 bg-slate-950/50 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-500 z-20 transition-all cursor-pointer"
         >
           <FaTimes size={24} />
         </button>
@@ -241,7 +246,7 @@ const Portfolio = () => {
     resumeLink:
       "https://drive.google.com/file/d/10VS4UHcQVaN3WC5XVRZp7gmzpry4iO2A/view?usp=sharing",
     about:
-      "Hi! I'm Haridas Sarker, a passionate MERN Stack Developer with a love for building modern, scalable, and interactive web applications. Since 2021, I have been exploring MongoDB, Express.js, React, and Node.js to bring ideas to life with clean, performant code.",
+      "Hi! I'm Haridas Sarker, a passionate Full Stack Developer with a love for building modern, scalable, and interactive web applications. Since 2021, I have been exploring MongoDB, Express.js, React, and Node.js to bring ideas to life with clean, performant code.",
     projects: [
       {
         title: "Food Delivery Platform",
@@ -287,10 +292,11 @@ const Portfolio = () => {
         title: "Frontend",
         icon: <FaCode />,
         skills: [
+          { name: "HTML5", icon: <FaHtml5 /> },
+          { name: "Tailwind", icon: <SiTailwindcss /> },
           { name: "React", icon: <SiReact /> },
           { name: "JS", icon: <SiJavascript /> },
-          { name: "Tailwind", icon: <SiTailwindcss /> },
-          { name: "HTML5", icon: <FaHtml5 /> },
+          { name: "Next.js", icon: <SiNextdotjs /> },
         ],
       },
       {
@@ -299,17 +305,21 @@ const Portfolio = () => {
         skills: [
           { name: "Node.js", icon: <SiNodedotjs /> },
           { name: "MongoDB", icon: <SiMongodb /> },
+          { name: "Express.js", icon: <FaServer /> },
           { name: "Firebase", icon: <SiFirebase /> },
           { name: "APIs", icon: <FaTerminal /> },
+          { name: "NextAuth", icon: <FaUserLock /> },
         ],
       },
       {
         title: "Tools",
         icon: <FaTools />,
         skills: [
+          { name: "Vs Code", icon: <VscVscode /> },
           { name: "Git", icon: <SiGit /> },
-          { name: "Postman", icon: <SiPostman /> },
+          { name: "GitHub", icon: <SiGithub /> },
           { name: "Figma", icon: <SiFigma /> },
+          { name: "Thander Client", icon: <FaBolt /> },
         ],
       },
     ],
@@ -390,33 +400,38 @@ const Portfolio = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-2 bg-slate-900/50 p-1.5 rounded-full border border-slate-800">
-            {["about", "skills", "projects", "education", "contact"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item}`}
-                  onClick={() => setActiveNav(item)}
-                  className={`relative px-5 py-2 text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
-                    activeNav === item
-                      ? "text-white"
-                      : "text-slate-500 hover:text-slate-300"
-                  }`}
-                >
-                  {activeNav === item && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute inset-0 bg-emerald-600 rounded-full -z-10"
-                      transition={{
-                        type: "spring",
-                        bounce: 0.2,
-                        duration: 0.6,
-                      }}
-                    />
-                  )}
-                  {item}
-                </a>
-              ),
-            )}
+            {[
+              "home",
+              "about",
+              "skills",
+              "projects",
+              "education",
+              "contact",
+            ].map((item) => (
+              <a
+                key={item}
+                href={`#${item}`}
+                onClick={() => setActiveNav(item)}
+                className={`relative px-5 py-2 text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
+                  activeNav === item
+                    ? "text-white"
+                    : "text-slate-500 hover:text-slate-300"
+                }`}
+              >
+                {activeNav === item && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-emerald-600 rounded-full -z-10"
+                    transition={{
+                      type: "spring",
+                      bounce: 0.2,
+                      duration: 0.6,
+                    }}
+                  />
+                )}
+                {item}
+              </a>
+            ))}
           </div>
 
           <button
@@ -427,7 +442,6 @@ const Portfolio = () => {
           </button>
         </div>
       </nav>
-
       {/* Hero Section */}
       <header
         id="home"
@@ -491,7 +505,7 @@ const Portfolio = () => {
                 href={data.resumeLink}
                 className="px-8 py-4 border border-slate-700 text-slate-200 rounded-2xl font-bold flex items-center gap-2"
               >
-                Resume <FaDownload size={14} />
+                View Resume <FaDownload size={14} />
               </motion.a>
             </div>
           </motion.div>
@@ -533,21 +547,112 @@ const Portfolio = () => {
           </motion.div>
         </div>
       </header>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-24 px-6 bg-slate-950 scroll-mt-20">
-        <div className="max-w-7xl mx-auto text-center mb-20">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-emerald-500 font-black tracking-[0.4em] uppercase text-xs mb-4 block"
-          >
-            Recent Masterpieces
-          </motion.span>
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">
-            Featured <span className="text-emerald-600">Projects.</span>
+      {/* About Section */}
+      <section
+        id="about"
+        className="py-24 px-6 relative overflow-hidden scroll-mt-20"
+      >
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
+            About Me
           </h2>
-          <div className="w-20 h-1 bg-emerald-600 mx-auto mt-6 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.6)]"></div>
+
+          <p className="text-slate-400 mb-6">
+            A self-motivated developer who loves building real things and
+            constantly learning
+          </p>
+
+          <p className="text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            Hello! 👋 I'm{" "}
+            <span className="text-blue-400 font-semibold">{data.name}</span>, I
+            started my web development journey out of curiosity, and now I truly
+            enjoy building responsive and functional websites. I'm passionate
+            about learning and growing every day as a developer.
+          </p>
+
+          <div className="inline-block px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold mb-16">
+            🚀 Turning curiosity into code and code into real-world solutions
+          </div>
+
+          {/* Cards */}
+          <div className="grid md:grid-cols-2 gap-8 text-left">
+            {/* Who I Am */}
+            <div className="p-8 rounded-2xl border border-blue-500/40 bg-slate-900/40">
+              <h3 className="text-white text-xl font-bold mb-4">Who I Am</h3>
+              <ul className="text-slate-400 space-y-2">
+                <li>• MERN Stack developer with a love for clean UI.</li>
+                <li>
+                  • React and Next.js is my comfort zone for building apps.
+                </li>
+                <li>• I keep learning and improving every day.</li>
+              </ul>
+            </div>
+
+            {/* What I Do */}
+            <div className="p-8 rounded-2xl border border-purple-500/40 bg-slate-900/40">
+              <h3 className="text-white text-xl font-bold mb-4">What I Do</h3>
+              <ul className="text-slate-400 space-y-2">
+                <li>
+                  • Build responsive sites with HTML, CSS, JS, React, Next.js.
+                </li>
+                <li>
+                  • Use backend tools like Node, MongoDB, Firebase, NextAuth.
+                </li>
+                <li>• Create projects to practice and grow skills.</li>
+              </ul>
+            </div>
+
+            {/* Goals */}
+            <div className="p-8 rounded-2xl border border-green-500/40 bg-slate-900/40">
+              <h3 className="text-white text-xl font-bold mb-4">My Goals</h3>
+              <ul className="text-slate-400 space-y-2">
+                <li>• Become a full-stack developer with real impact.</li>
+                <li>• Work with a strong tech team on real projects.</li>
+                <li>• Get a dev job and grow step by step.</li>
+              </ul>
+            </div>
+
+            {/* Philosophy */}
+            <div className="p-8 rounded-2xl border border-orange-500/40 bg-slate-900/40">
+              <h3 className="text-white text-xl font-bold mb-4">
+                My Philosophy
+              </h3>
+              <ul className="text-slate-400 space-y-2">
+                <li>• Code should solve problems, not create them.</li>
+                <li>• Keep it simple, clean, and easy to maintain.</li>
+                <li>• Learning never stops in tech — keep going.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-6 scroll-mt-20">
+        <div className="max-w-7xl mx-auto text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
+            Technical Skills
+          </h2>
+          <p className="text-slate-400 mt-6">
+            My technical toolkit for building fast and efficient web solutions.
+          </p>
+        </div>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+          {data.skillsCategories.map((cat, index) => (
+            <SkillCard key={index} cat={cat} index={index} />
+          ))}
+        </div>
+      </section>
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-6 bg-slate-950 scroll-mt-20">
+        <div className="max-w-7xl mx-auto text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
+            Featured Projects
+          </h2>
+          <p className="text-slate-400 mt-6">
+            Real-world projects built with modern technologies, focusing on
+            performance, usability, and scalability.
+          </p>
+          {/* <div className="w-20 h-1 bg-emerald-600 mx-auto mt-6 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.6)]"></div> */}
         </div>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {data.projects.map((project, index) => (
@@ -598,182 +703,247 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Technical Arsenal Section */}
-      <section id="skills" className="py-24 px-6 scroll-mt-20">
-        <div className="max-w-7xl mx-auto text-center mb-20">
-          <span className="text-emerald-500 font-black tracking-[0.4em] uppercase text-xs mb-4 block">
-            My Mastery
-          </span>
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">
-            Technical <span className="text-emerald-500">Skills</span>
+      {/* Experience */}
+
+      {/* --- Education Section --- */}
+      <section id="education" className="py-20 px-6 scroll-mt-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
+            Academic Path
           </h2>
-          <div className="w-20 h-1 bg-emerald-500 mx-auto mt-6 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.8)]"></div>
-        </div>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-          {data.skillsCategories.map((cat, index) => (
-            <SkillCard key={index} cat={cat} index={index} />
-          ))}
+
+          <div className="space-y-8 border-l border-slate-800 pl-6">
+            {[
+              {
+                title: "B.Sc in Computer Science & Engineering (CSE)",
+                school: "City University, Dhaka, Bangladesh",
+                date: "2021 — 2025",
+                desc: "Focused on software development, data structures, and modern web technologies. Built multiple academic and personal projects to strengthen practical knowledge.",
+              },
+
+              {
+                title: "Higher Secondary Certificate (HSC)",
+                school: "Belkuchi Model Degree College",
+                date: "2017 — 2019",
+                desc: "Completed higher secondary education with a focus on science. Developed strong analytical.",
+              },
+              {
+                title: "Secondary School Certificate (SSC)",
+                school: "Your School Name",
+                date: "2014 — 2016",
+                desc: "Built a strong academic foundation with interest in technology and logical thinking from an early stage.",
+              },
+              {
+                title: "MERN Stack Development",
+                school: "Programming Hero",
+                date: "2025-Present",
+                desc: "Completed hands-on training in MERN stack development using MongoDB, Express, React, and Node.js with real-world project experience.",
+              },
+            ].map((edu, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2 }}
+                className="relative group"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute -left-[34px] top-3 w-4 h-4 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
+
+                <div className="p-8 bg-slate-900/40 border border-slate-800 rounded-[2rem] hover:border-emerald-500/40 transition-all duration-300">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
+                        <FaGraduationCap size={20} />
+                      </div>
+
+                      <h3 className="text-lg font-black text-white uppercase tracking-tight">
+                        {edu.title}
+                      </h3>
+                    </div>
+
+                    <span className="text-[10px] font-black bg-slate-800 text-slate-300 px-4 py-2 rounded-xl uppercase tracking-[0.2em]">
+                      {edu.date}
+                    </span>
+                  </div>
+
+                  <p className="text-slate-400 text-sm italic mb-2 ml-11">
+                    {edu.school}
+                  </p>
+
+                  <p className="text-slate-500 text-sm leading-relaxed ml-11">
+                    {edu.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* --- About & Education Section --- */}
-      <section
-        id="about"
-        className="py-24 px-6 relative overflow-hidden scroll-mt-20"
+      {/* Footer section */}
+      <footer
+        id="contact"
+        className="py-24 px-6 bg-slate-950 border-t border-slate-900/50 scroll-mt-20"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-emerald-500/5 blur-[120px] -z-10"></div>
         <div className="max-w-7xl mx-auto">
+          <h2 className="text-center text-4xl md:text-5xl font-black text-emerald-500 mb-5">
+            Let's Connect
+          </h2>
+          <p className="text-slate-400 mb-10 text-center">
+            A concise overview of my educational journey from school to SSC,
+            building a strong foundation in computer science and
+            problem-solving.
+          </p>
           <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* LEFT SIDE */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div>
-                <span className="text-emerald-500 font-black tracking-[0.4em] uppercase text-xs mb-4 block">
-                  Introduction
-                </span>
-                <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">
-                  Who is <span className="text-emerald-600">Haridas?</span>
-                </h2>
-                <div className="w-20 h-1 bg-emerald-600 mt-6 rounded-full"></div>
-              </div>
-              <div className="relative p-8 bg-slate-900/40 border border-slate-800 rounded-[2.5rem] backdrop-blur-sm group hover:border-emerald-500/30 transition-all duration-500">
-                <p className="text-xl text-slate-400 leading-relaxed italic relative z-10">
-                  "{data.about}"
-                </p>
-                <span className="absolute -top-6 -left-2 text-8xl text-emerald-500/10 font-serif select-none pointer-events-none">
-                  “
-                </span>
-              </div>
-            </motion.div>
-
-            <div id="education" className="space-y-6 scroll-mt-20">
-              <span className="text-emerald-500 font-black tracking-[0.4em] uppercase text-xs mb-4 block">
-                Academic Path
-              </span>
-              {data.education.map((edu, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.2 }}
-                  className="group relative p-8 bg-slate-900/30 border border-slate-800 rounded-[2rem] hover:bg-slate-900/50 transition-all duration-300"
-                >
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
-                    <div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
-                          <FaGraduationCap size={20} />
-                        </div>
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight group-hover:text-emerald-400 transition-colors">
-                          {edu.title}
-                        </h3>
-                      </div>
-                      <p className="text-slate-400 text-sm italic ml-11">
-                        {edu.school}
-                      </p>
-                    </div>
-                    <span className="text-[10px] font-black bg-slate-800 text-slate-300 px-4 py-2 rounded-xl uppercase tracking-[0.2em] group-hover:bg-emerald-500 group-hover:text-white transition-all">
-                      {edu.date}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- Footer / Let's Connect Section --- */}
-      <footer
-        id="contact"
-        className="py-24 px-6 bg-slate-950 relative border-t border-slate-900/50 scroll-mt-20"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter uppercase italic leading-none">
+              <h2 className="text-5xl md:text-7xl font-black text-white leading-none uppercase italic">
                 Let's Build <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">
-                  Greatness.
+                  Something Great.
                 </span>
               </h2>
+
+              <p className="text-slate-400 text-sm leading-relaxed max-w-md">
+                I’m always open to discussing new projects, creative ideas or
+                opportunities to be part of your visions. Let’s create something
+                amazing together.
+              </p>
+
               <div className="flex flex-wrap gap-4">
-                <motion.a
-                  whileHover={{ y: -5 }}
+                <a
                   href={`mailto:${data.email}`}
-                  className="px-8 py-4 bg-emerald-600 text-white rounded-2xl font-bold flex items-center gap-3 shadow-xl"
+                  className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 transition text-white rounded-xl font-bold flex items-center gap-2 shadow-lg"
                 >
                   <FaEnvelope /> Email Me
-                </motion.a>
-                <motion.a
-                  whileHover={{ y: -5 }}
-                  href="https://call.whatsapp.com/video/PHZ3cxjyQY0oit5st7Wwdr"
-                  className="px-8 py-4 bg-emerald-600 text-white rounded-2xl font-bold flex items-center gap-3 shadow-xl"
+                </a>
+
+                <a
+                  href="https://wa.me/880XXXXXXXXXX"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-slate-900 border border-slate-800 hover:border-emerald-500 transition text-white rounded-xl font-bold flex items-center gap-2"
                 >
                   <FaWhatsapp /> WhatsApp
-                </motion.a>
+                </a>
+              </div>
+
+              {/* Socials */}
+              <div className="grid grid-cols-2 gap-3 pt-6">
+                {[
+                  {
+                    icon: <FaLinkedinIn size={18} />,
+                    url: "https://linkedin.com/in/haridas-sarker-658970288",
+                    label: "LinkedIn",
+                  },
+                  {
+                    icon: <FaGithub size={18} />,
+                    url: "https://github.com/HoridasPro",
+                    label: "GitHub",
+                  },
+                  {
+                    icon: <FaFacebook size={18} />,
+                    url: "https://www.facebook.com/horidas.sarker.1",
+                    label: "Facebook",
+                  },
+                  {
+                    icon: <FaWhatsapp size={18} />,
+                    url: "https://wa.me/880XXXXXXXXXX",
+                    label: "WhatsApp",
+                  },
+                ].map((soc, i) => (
+                  <motion.a
+                    key={i}
+                    href={soc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3 p-4 bg-slate-900/40 border border-slate-800 rounded-xl hover:border-emerald-500/50 transition group"
+                  >
+                    <span className="text-slate-500 group-hover:text-emerald-500 transition">
+                      {soc.icon}
+                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-white">
+                      {soc.label}
+                    </span>
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                {
-                  icon: <FaLinkedinIn size={24} />,
-                  url: "https://linkedin.com/in/haridas-sarker-658970288",
-                  label: "LinkedIn",
-                },
-                {
-                  icon: <FaGithub size={24} />,
-                  url: "https://github.com/HoridasPro",
-                  label: "Github",
-                },
-                {
-                  icon: <FaFacebook size={24} />,
-                  url: "https://www.facebook.com/horidas.sarker.1",
-                  label: "Facebook",
-                },
-                {
-                  icon: <FaWhatsapp size={24} />,
-                  url: "https://call.whatsapp.com/video/PHZ3cxjyQY0oit5st7Wwdr",
-                  label: "What's App",
-                },
-              ].map((soc, i) => (
-                <motion.a
-                  key={i}
-                  whileHover={{ scale: 1.05 }}
-                  href={soc.url}
-                  className="flex flex-col items-center justify-center p-8 bg-slate-900/50 border border-slate-800 rounded-[2rem] hover:border-emerald-500/50 transition-all group"
-                >
-                  <div className="text-slate-500 group-hover:text-emerald-500 mb-4">
-                    {soc.icon}
-                  </div>
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 group-hover:text-white">
-                    {soc.label}
-                  </span>
-                </motion.a>
-              ))}
-            </div>
+
+            {/* RIGHT SIDE - FORM */}
+            <motion.form
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-5 bg-slate-900/30 border border-slate-800 p-8 rounded-3xl backdrop-blur-md"
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("Message Sent!");
+              }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-2">Contact Me</h3>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
+                  required
+                />
+
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
+                  required
+                />
+              </div>
+
+              <input
+                type="text"
+                placeholder="Subject"
+                className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
+                required
+              />
+
+              <textarea
+                rows="6"
+                placeholder="Your Message..."
+                className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500 resize-none"
+                required
+              />
+
+              <button
+                type="submit"
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 transition text-white rounded-2xl font-bold shadow-lg cursor-pointer"
+              >
+                Send Message 🚀
+              </button>
+            </motion.form>
           </div>
-          <div className="mt-24 pt-12 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black tracking-[0.4em] text-slate-700 uppercase italic">
-            <p className="flex mx-auto">
-              © {new Date().getFullYear()} {data.name.toUpperCase()} —
-              ARCHITECTING THE FUTURE
+
+          {/* BOTTOM BAR */}
+          <div className="mt-24 pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black tracking-[0.35em] text-slate-600 uppercase italic">
+            <p>
+              © {new Date().getFullYear()} {data.name.toUpperCase()} — ALL
+              RIGHTS RESERVED
             </p>
-            <div className="flex items-center gap-6">
-              <span className="text-slate-500">{data.phone}</span>
-              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-              <span className="text-slate-500">Dhaka, Bangladesh</span>
+
+            <div className="flex items-center gap-4">
+              <span>{data.phone}</span>
+              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+              <span>Dhaka, Bangladesh</span>
             </div>
           </div>
         </div>
       </footer>
-
       {/* Project Modal */}
       <AnimatePresence>
         {selectedProject && (
@@ -783,7 +953,6 @@ const Portfolio = () => {
           />
         )}
       </AnimatePresence>
-
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
