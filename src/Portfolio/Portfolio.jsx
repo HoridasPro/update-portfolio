@@ -39,9 +39,12 @@ import {
   SiFigma,
   SiNextdotjs,
   SiGithub,
+  SiCss3,
+  SiExpress,
 } from "react-icons/si";
 import myImg from "../assets/300x300.jpg";
 import { VscVscode } from "react-icons/vsc";
+// import Footer from "../Components/Footer";
 
 // --- Animation Variants ---
 const modalContentVariants = {
@@ -442,7 +445,6 @@ const Portfolio = () => {
           </button>
         </div>
       </nav>
-      {/* Hero Section */}
       <header
         id="home"
         onMouseMove={handleMouseMove}
@@ -452,11 +454,22 @@ const Portfolio = () => {
         }}
         className="relative min-h-screen flex items-center pt-20 overflow-hidden"
       >
+        {/* Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-[20%] left-[10%] w-72 h-72 bg-emerald-600/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-[20%] right-[10%] w-96 h-96 bg-teal-600/10 rounded-full blur-[120px]"></div>
+          <motion.div
+            className="absolute top-[20%] left-[10%] w-72 h-72 bg-emerald-600/20 rounded-full blur-[120px]"
+            animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-[20%] right-[10%] w-96 h-96 bg-teal-600/10 rounded-full blur-[120px]"
+            animate={{ x: [0, -30, 0], y: [0, 30, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
+
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center z-10 w-full">
+          {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -469,12 +482,14 @@ const Portfolio = () => {
               </span>
               Available for Hire
             </motion.div>
+
             <h1 className="text-4xl font-black text-white leading-[1.1] mb-6 tracking-tighter">
               Full{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 italic">
                 Stack Developer
               </span>
             </h1>
+
             <div className="h-10 mb-8">
               <AnimatePresence mode="wait">
                 <motion.p
@@ -488,11 +503,19 @@ const Portfolio = () => {
                 </motion.p>
               </AnimatePresence>
             </div>
+
             <p className="text-slate-400 text-lg max-w-lg mb-10 leading-relaxed">
               I'm <span className="text-white font-bold">{data.name}</span>. I
               build robust, scalable, and visually stunning web applications.
             </p>
-            <div className="flex flex-wrap gap-5">
+
+            {/* BUTTONS */}
+            <motion.div
+              className="flex flex-wrap gap-5"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 href="#projects"
@@ -500,6 +523,7 @@ const Portfolio = () => {
               >
                 View Projects <FaRocket />
               </motion.a>
+
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 href={data.resumeLink}
@@ -507,77 +531,162 @@ const Portfolio = () => {
               >
                 View Resume <FaDownload size={14} />
               </motion.a>
-            </div>
+            </motion.div>
           </motion.div>
+
+          {/* RIGHT IMAGE */}
           <motion.div
             style={{ rotateX, rotateY, perspective: 1000 }}
             className="relative flex justify-center items-center"
           >
             <div className="absolute w-[110%] h-[110%] border border-slate-800 rounded-full animate-[spin_20s_linear_infinite] hidden md:block" />
+
             <FloatingIcon
               icon={<SiReact className="text-cyan-400" />}
               delay={0}
-              position="top-0 left-0"
+              position="top-0 -left-5"
+            />
+            <FloatingIcon
+              icon={<SiNextdotjs className="text-white" />}
+              delay={0}
+              position="-top-30 left-30"
+            />
+            <FloatingIcon
+              icon={<SiCss3 className="text-blue-500" />}
+              delay={0}
+              position="-top-35 left-90"
             />
             <FloatingIcon
               icon={<SiNodedotjs className="text-emerald-500" />}
               delay={1}
-              position="top-0 right-0"
+              position="-top-10 right-0"
+            />
+            <FloatingIcon
+              icon={<SiTailwindcss className="text-sky-400" />}
+              delay={1}
+              position="top-45 right-140"
             />
             <FloatingIcon
               icon={<SiMongodb className="text-emerald-500" />}
               delay={2}
-              position="bottom-0 left-10"
+              position="bottom-0 -left-5"
+            />
+            <FloatingIcon
+              icon={<SiExpress className="text-white" />}
+              delay={2}
+              position="-bottom-25 left-35"
             />
             <FloatingIcon
               icon={<SiJavascript className="text-yellow-400" />}
               delay={1.5}
               position="bottom-10 right-0"
             />
-            <div className="relative group">
+            <FloatingIcon
+              icon={<SiFirebase className="text-yellow-400" />}
+              delay={1.5}
+              position="-bottom-20 right-35"
+            />
+            <FloatingIcon
+              icon={<FaHtml5 className="text-orange-500" />}
+              delay={1.5}
+              position="bottom-45 left-140"
+            />
+
+            {/* IMAGE FLOAT ANIMATION */}
+            <motion.div
+              className="relative group"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
               <div className="absolute inset-0 bg-emerald-500 rounded-[3.5rem] blur-3xl opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative w-72 h-72 md:w-96 md:h-96 bg-slate-900 p-4 rounded-[4rem] border border-slate-800 overflow-hidden">
+
+              <motion.div
+                className="relative w-72 h-72 md:w-96 md:h-96 bg-slate-900 p-4 rounded-[4rem] border border-slate-800 overflow-hidden"
+                animate={{ scale: [1, 1.03, 1] }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
                 <img
                   src={myImg}
                   alt={data.name}
                   className="w-full h-full object-cover rounded-[3.2rem] grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                 />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </header>
       {/* About Section */}
+
       <section
         id="about"
         className="py-24 px-6 relative overflow-hidden scroll-mt-20"
       >
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
+          {/* Heading */}
+          <motion.h2
+            className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             About Me
-          </h2>
+          </motion.h2>
 
-          <p className="text-slate-400 mb-6">
+          {/* Sub text */}
+          <motion.p
+            className="text-slate-400 mb-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             A self-motivated developer who loves building real things and
             constantly learning
-          </p>
+          </motion.p>
 
-          <p className="text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+          {/* Description */}
+          <motion.p
+            className="text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             Hello! 👋 I'm{" "}
             <span className="text-blue-400 font-semibold">{data.name}</span>, I
             started my web development journey out of curiosity, and now I truly
             enjoy building responsive and functional websites. I'm passionate
             about learning and growing every day as a developer.
-          </p>
+          </motion.p>
 
-          <div className="inline-block px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold mb-16">
+          {/* Tagline */}
+          <motion.div
+            className="inline-block px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold mb-16"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05 }}
+          >
             🚀 Turning curiosity into code and code into real-world solutions
-          </div>
+          </motion.div>
 
           {/* Cards */}
           <div className="grid md:grid-cols-2 gap-8 text-left">
             {/* Who I Am */}
-            <div className="p-8 rounded-2xl border border-blue-500/40 bg-slate-900/40">
+            <motion.div
+              className="p-8 rounded-2xl border border-blue-500/40 bg-slate-900/40"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
               <h3 className="text-white text-xl font-bold mb-4">Who I Am</h3>
               <ul className="text-slate-400 space-y-2">
                 <li>• MERN Stack developer with a love for clean UI.</li>
@@ -586,10 +695,17 @@ const Portfolio = () => {
                 </li>
                 <li>• I keep learning and improving every day.</li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* What I Do */}
-            <div className="p-8 rounded-2xl border border-purple-500/40 bg-slate-900/40">
+            <motion.div
+              className="p-8 rounded-2xl border border-purple-500/40 bg-slate-900/40"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
               <h3 className="text-white text-xl font-bold mb-4">What I Do</h3>
               <ul className="text-slate-400 space-y-2">
                 <li>
@@ -600,20 +716,34 @@ const Portfolio = () => {
                 </li>
                 <li>• Create projects to practice and grow skills.</li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* Goals */}
-            <div className="p-8 rounded-2xl border border-green-500/40 bg-slate-900/40">
+            <motion.div
+              className="p-8 rounded-2xl border border-green-500/40 bg-slate-900/40"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
               <h3 className="text-white text-xl font-bold mb-4">My Goals</h3>
               <ul className="text-slate-400 space-y-2">
                 <li>• Become a full-stack developer with real impact.</li>
                 <li>• Work with a strong tech team on real projects.</li>
                 <li>• Get a dev job and grow step by step.</li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* Philosophy */}
-            <div className="p-8 rounded-2xl border border-orange-500/40 bg-slate-900/40">
+            <motion.div
+              className="p-8 rounded-2xl border border-orange-500/40 bg-slate-900/40"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
               <h3 className="text-white text-xl font-bold mb-4">
                 My Philosophy
               </h3>
@@ -622,7 +752,7 @@ const Portfolio = () => {
                 <li>• Keep it simple, clean, and easy to maintain.</li>
                 <li>• Learning never stops in tech — keep going.</li>
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -645,59 +775,103 @@ const Portfolio = () => {
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6 bg-slate-950 scroll-mt-20">
         <div className="max-w-7xl mx-auto text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
+          {/* Heading */}
+          <motion.h2
+            className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5"
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
             Featured Projects
-          </h2>
-          <p className="text-slate-400 mt-6">
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            className="text-slate-400 mt-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             Real-world projects built with modern technologies, focusing on
             performance, usability, and scalability.
-          </p>
-          {/* <div className="w-20 h-1 bg-emerald-600 mx-auto mt-6 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.6)]"></div> */}
+          </motion.p>
         </div>
+
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {data.projects.map((project, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -10 }}
               className="group relative bg-slate-900/40 border border-slate-800 rounded-[2.5rem] overflow-hidden"
+              initial={{ opacity: 0, y: 60, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true }}
+              whileHover={{
+                y: -12,
+                scale: 1.02,
+              }}
             >
+              {/* IMAGE */}
               <div className="h-72 overflow-hidden relative">
-                <img
+                <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
                 />
-                <div className="absolute inset-0 bg-slate-950/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center p-8">
+
+                {/* OVERLAY */}
+                <motion.div
+                  className="absolute inset-0 bg-slate-950/80 opacity-0 group-hover:opacity-100 flex flex-col justify-center p-8"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <p className="text-slate-300 text-sm mb-6 italic">
                     "{project.description}"
                   </p>
+
                   <button
                     onClick={() => setSelectedProject(project)}
                     className="text-emerald-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 cursor-pointer"
                   >
                     View Details <FaArrowRight />
                   </button>
-                </div>
+                </motion.div>
               </div>
-              <div className="p-8">
+
+              {/* CONTENT */}
+              <motion.div
+                className="p-8"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
                 <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-4">
                   {project.title}
                 </h3>
+
                 <div className="flex gap-4">
-                  <a
+                  <motion.a
                     href={project.github}
                     className="text-slate-500 hover:text-white"
+                    whileHover={{ scale: 1.2, rotate: 5 }}
                   >
                     <FaGithub size={20} />
-                  </a>
-                  <a
+                  </motion.a>
+
+                  <motion.a
                     href={project.link}
                     className="text-slate-500 hover:text-white"
+                    whileHover={{ scale: 1.2, rotate: -5 }}
                   >
                     <FaExternalLinkAlt size={18} />
-                  </a>
+                  </motion.a>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
@@ -729,12 +903,12 @@ const Portfolio = () => {
               },
               {
                 title: "Secondary School Certificate (SSC)",
-                school: "Your School Name",
+                school: "Shohagpur S.K Pilot Model High School",
                 date: "2014 — 2016",
                 desc: "Built a strong academic foundation with interest in technology and logical thinking from an early stage.",
               },
               {
-                title: "MERN Stack Development",
+                title: "Full Stack Development",
                 school: "Programming Hero",
                 date: "2025-Present",
                 desc: "Completed hands-on training in MERN stack development using MongoDB, Express, React, and Node.js with real-world project experience.",
@@ -781,25 +955,41 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Footer section */}
       <footer
         id="contact"
         className="py-24 px-6 bg-slate-950 border-t border-slate-900/50 scroll-mt-20"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-4xl md:text-5xl font-black text-emerald-500 mb-5">
+          {/* Heading */}
+          <motion.h2
+            className="text-center text-4xl md:text-5xl font-black text-emerald-500 mb-5"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
             Let's Connect
-          </h2>
-          <p className="text-slate-400 mb-10 text-center">
+          </motion.h2>
+
+          {/* Subtext */}
+          <motion.p
+            className="text-slate-400 mb-10 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             A concise overview of my educational journey from school to SSC,
             building a strong foundation in computer science and
             problem-solving.
-          </p>
+          </motion.p>
+
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* LEFT SIDE */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
               className="space-y-8"
             >
@@ -816,25 +1006,28 @@ const Portfolio = () => {
                 amazing together.
               </p>
 
+              {/* Buttons */}
               <div className="flex flex-wrap gap-4">
-                <a
+                <motion.a
                   href={`mailto:${data.email}`}
                   className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 transition text-white rounded-xl font-bold flex items-center gap-2 shadow-lg"
+                  whileHover={{ scale: 1.05 }}
                 >
                   <FaEnvelope /> Email Me
-                </a>
+                </motion.a>
 
-                <a
+                <motion.a
                   href="https://wa.me/880XXXXXXXXXX"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-slate-900 border border-slate-800 hover:border-emerald-500 transition text-white rounded-xl font-bold flex items-center gap-2"
+                  whileHover={{ scale: 1.05 }}
                 >
                   <FaWhatsapp /> WhatsApp
-                </a>
+                </motion.a>
               </div>
 
-              {/* Socials */}
+              {/* Social Cards */}
               <div className="grid grid-cols-2 gap-3 pt-6">
                 {[
                   {
@@ -863,8 +1056,12 @@ const Portfolio = () => {
                     href={soc.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-3 p-4 bg-slate-900/40 border border-slate-800 rounded-xl hover:border-emerald-500/50 transition group"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05, y: -5 }}
                   >
                     <span className="text-slate-500 group-hover:text-emerald-500 transition">
                       {soc.icon}
@@ -877,10 +1074,11 @@ const Portfolio = () => {
               </div>
             </motion.div>
 
-            {/* RIGHT SIDE - FORM */}
+            {/* FORM */}
             <motion.form
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
               className="space-y-5 bg-slate-900/30 border border-slate-800 p-8 rounded-3xl backdrop-blur-md"
               onSubmit={(e) => {
@@ -891,14 +1089,16 @@ const Portfolio = () => {
               <h3 className="text-2xl font-bold text-white mb-2">Contact Me</h3>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <input
+                <motion.input
+                  whileFocus={{ scale: 1.02 }}
                   type="text"
                   placeholder="Your Name"
                   className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
                   required
                 />
 
-                <input
+                <motion.input
+                  whileFocus={{ scale: 1.02 }}
                   type="email"
                   placeholder="Your Email"
                   className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
@@ -906,31 +1106,41 @@ const Portfolio = () => {
                 />
               </div>
 
-              <input
+              <motion.input
+                whileFocus={{ scale: 1.02 }}
                 type="text"
                 placeholder="Subject"
                 className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
                 required
               />
 
-              <textarea
+              <motion.textarea
+                whileFocus={{ scale: 1.02 }}
                 rows="6"
                 placeholder="Your Message..."
                 className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500 resize-none"
                 required
               />
 
-              <button
+              <motion.button
                 type="submit"
                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 transition text-white rounded-2xl font-bold shadow-lg cursor-pointer"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
                 Send Message 🚀
-              </button>
+              </motion.button>
             </motion.form>
           </div>
 
-          {/* BOTTOM BAR */}
-          <div className="mt-24 pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black tracking-[0.35em] text-slate-600 uppercase italic">
+          {/* BOTTOM */}
+          <motion.div
+            className="mt-24 pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black tracking-[0.35em] text-slate-600 uppercase italic"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <p>
               © {new Date().getFullYear()} {data.name.toUpperCase()} — ALL
               RIGHTS RESERVED
@@ -938,12 +1148,18 @@ const Portfolio = () => {
 
             <div className="flex items-center gap-4">
               <span>{data.phone}</span>
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+              <motion.span
+                className="w-1.5 h-1.5 bg-emerald-500 rounded-full"
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
               <span>Dhaka, Bangladesh</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </footer>
+      {/* <Footer data={data}></Footer> */}
+
       {/* Project Modal */}
       <AnimatePresence>
         {selectedProject && (
