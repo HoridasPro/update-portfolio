@@ -44,7 +44,6 @@ import {
 } from "react-icons/si";
 import myImg from "../assets/300x300.jpg";
 import { VscVscode } from "react-icons/vsc";
-// import Footer from "../Components/Footer";
 
 // --- Animation Variants ---
 const modalContentVariants = {
@@ -390,7 +389,7 @@ const Portfolio = () => {
 
   return (
     <div className="bg-slate-950 text-slate-300 min-h-screen font-sans selection:bg-emerald-500/30">
-      {/* --- UPDATED NAVBAR --- */}
+      {/* --- Navbar --- */}
       <nav className="fixed top-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50 z-50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <motion.a
@@ -445,6 +444,8 @@ const Portfolio = () => {
           </button>
         </div>
       </nav>
+
+      {/* Home Section */}
       <header
         id="home"
         onMouseMove={handleMouseMove}
@@ -876,9 +877,6 @@ const Portfolio = () => {
           ))}
         </div>
       </section>
-
-      {/* Experience */}
-
       {/* --- Education Section --- */}
       <section id="education" className="py-20 px-6 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
@@ -953,6 +951,91 @@ const Portfolio = () => {
             ))}
           </div>
         </div>
+      </section>
+
+      <section id="education" className="py-24 px-6 bg-slate-950 scroll-mt-20">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <motion.h2
+            className="text-4xl md:text-5xl font-black text-emerald-500 mb-5"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            Certificates
+          </motion.h2>
+
+          <motion.p
+            className="text-slate-400 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            A collection of my learning achievements and completed courses in
+            web development and programming.
+          </motion.p>
+        </div>
+
+        {/* DATA ADDED HERE */}
+        {(() => {
+          const certificates = [
+            {
+              title: "Complete Full stack Web Development (MERN)",
+              platform: "Programming Hero",
+              image:
+                "https://i.postimg.cc/CLQPHzFR/programing-hero-certificate.png",
+              link: "https://drive.google.com/file/d/1LFFxbnPztFJv9zJbBfG_I3VU1pUlZL0l/view?usp=sharing",
+            },
+          ];
+
+          return (
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {certificates.map((cert, index) => (
+                <motion.div
+                  key={index}
+                  className="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden"
+                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: index * 0.15, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                >
+                  {/* IMAGE */}
+                  <div className="h-56 overflow-hidden">
+                    <motion.img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="p-6 text-left">
+                    <h3 className="text-white text-xl font-bold mb-2">
+                      {cert.title}
+                    </h3>
+
+                    <p className="text-slate-400 text-sm mb-4">
+                      {cert.platform}
+                    </p>
+
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-500 font-bold text-sm hover:underline flex items-center gap-2"
+                    >
+                      View Certificate →
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          );
+        })()}
       </section>
 
       <footer
@@ -1158,7 +1241,6 @@ const Portfolio = () => {
           </motion.div>
         </div>
       </footer>
-      {/* <Footer data={data}></Footer> */}
 
       {/* Project Modal */}
       <AnimatePresence>
