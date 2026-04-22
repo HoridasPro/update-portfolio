@@ -246,7 +246,7 @@ const Portfolio = () => {
     email: "horidassarker6@gmail.com",
     phone: "+880 1816553754",
     resumeLink:
-      "https://drive.google.com/file/d/1pglVBMDwAgEVOTsk0uYnf3K8am3fKEeb/view?usp=sharing",
+      "https://drive.google.com/file/d/1YJokVMCzfb3sG7W62CSFoMEiI6iMzW9v/view?usp=sharing",
     about:
       "Hi! I'm Haridas Sarker, a passionate Full Stack Developer with a love for building modern, scalable, and interactive web applications. Since 2021, I have been exploring MongoDB, Express.js, React, and Node.js to bring ideas to life with clean, performant code.",
     projects: [
