@@ -42,7 +42,7 @@ import {
   SiCss3,
   SiExpress,
 } from "react-icons/si";
-import myImg from "../assets/300x300.jpg";
+import myImg from "../assets/profile.png";
 import { VscVscode } from "react-icons/vsc";
 
 // --- Animation Variants ---
