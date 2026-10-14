@@ -959,7 +959,7 @@ const Portfolio = () => {
           ))}
         </div>
       </section>
-      
+
       {/* Skills */}
       <section id="skills" className="py-20 px-6 scroll-mt-20">
         <div className="max-w-7xl mx-auto text-center mb-20">
@@ -1206,11 +1206,10 @@ const Portfolio = () => {
                 {/* Mobile Call */}
                 <motion.a
                   href="tel:+8801816553754"
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-500 transition text-white rounded-xl font-bold flex items-center gap-2 shadow-lg"
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-500 transition text-white rounded-xl font-bold shadow-lg"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <FaPhoneAlt />
-                  Call Me
+                  +8801816553754
                 </motion.a>
               </div>
               {/* Social Cards */}
