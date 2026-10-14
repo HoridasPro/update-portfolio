@@ -27,6 +27,9 @@ import {
   FaUserLock,
   FaServer,
   FaBolt,
+  FaShieldAlt,
+  FaPhoneAlt,
+  FaInstagram,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -41,6 +44,12 @@ import {
   SiGithub,
   SiCss3,
   SiExpress,
+  SiTypescript,
+  SiPostgresql,
+  SiPrisma,
+  SiJsonwebtokens,
+  SiAuth0,
+  SiPostman,
 } from "react-icons/si";
 import myImg from "../assets/profile.png";
 import { VscVscode } from "react-icons/vsc";
@@ -236,9 +245,9 @@ const Portfolio = () => {
 
   const roles = [
     "Full Stack Developer",
-    "React Specialist",
-    "Full Stack Enthusiast",
-    "Backend Architect",
+    "MERN Stack Developer",
+    "React & Next.js Developer",
+    "Backend Developer",
   ];
 
   const data = {
@@ -251,6 +260,24 @@ const Portfolio = () => {
       "Hi! I'm Haridas Sarker, a passionate Full Stack Developer with a love for building modern, scalable, and interactive web applications. Since 2021, I have been exploring MongoDB, Express.js, React, and Node.js to bring ideas to life with clean, performant code.",
     projects: [
       {
+        title: "Gears",
+        description:
+          "A modern full-stack e-commerce platform featuring seamless shopping, secure authentication, and efficient product management.",
+        techStack: [
+          "Next.js",
+          "JavaScript",
+          "TypeScript",
+          "Node.js",
+          "PostGreSQL",
+          "Express.js",
+          "Tailwind CSS",
+          "Prisma",
+        ],
+        github: "https://github.com/HoridasPro/gear-up-project-frontend",
+        link: "https://assignment-5-xi-two.vercel.app/",
+        image: "https://i.postimg.cc/j212pdvH/Screenshot-2026-10-14-134542.png",
+      },
+      {
         title: "Food Delivery Platform",
         description:
           "A full-stack food delivery application with real-time order updates and smooth user interface",
@@ -259,15 +286,7 @@ const Portfolio = () => {
         link: "https://endgame-quickbite.vercel.app",
         image: "https://i.postimg.cc/yNH84s9Y/Screenshot-2026-04-17-232415.png",
       },
-      {
-        title: "PawMart",
-        description:
-          "A premium MERN e-commerce experience for pet essentials with real-time sync.",
-        techStack: ["React", "Node.js", "MongoDB", "Express", "Tailwind"],
-        github: "https://github.com/HoridasPro/pawmart-project-assignment-10",
-        link: "https://keen-douhuahoridas-7a20db.netlify.app",
-        image: "https://i.postimg.cc/zB60g3f5/Screenshot-7.jpg",
-      },
+
       {
         title: "Asset Verse",
         description:
@@ -295,22 +314,40 @@ const Portfolio = () => {
         icon: <FaCode />,
         skills: [
           { name: "HTML5", icon: <FaHtml5 /> },
-          { name: "Tailwind", icon: <SiTailwindcss /> },
+          { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+          { name: "CSS3", icon: <SiCss3 /> },
+          { name: "JavaScript", icon: <SiJavascript /> },
+          { name: "TypeScript", icon: <SiTypescript /> },
           { name: "React", icon: <SiReact /> },
-          { name: "JS", icon: <SiJavascript /> },
           { name: "Next.js", icon: <SiNextdotjs /> },
         ],
       },
       {
         title: "Backend",
-        icon: <FaDatabase />,
+        icon: <FaServer />,
         skills: [
           { name: "Node.js", icon: <SiNodedotjs /> },
-          { name: "MongoDB", icon: <SiMongodb /> },
           { name: "Express.js", icon: <FaServer /> },
-          { name: "Firebase", icon: <SiFirebase /> },
-          { name: "APIs", icon: <FaTerminal /> },
-          { name: "NextAuth", icon: <FaUserLock /> },
+          { name: "REST API", icon: <FaServer /> },
+        ],
+      },
+      {
+        title: "Database & ORM",
+        icon: <FaDatabase />,
+        skills: [
+          { name: "MongoDB", icon: <SiMongodb /> },
+          { name: "PostGreSQL", icon: <SiPostgresql /> },
+          { name: "Prisma", icon: <SiPostgresql /> },
+        ],
+      },
+      {
+        title: "Authentication",
+        icon: <FaShieldAlt />,
+        skills: [
+          { name: "JWT", icon: <SiJsonwebtokens /> },
+          { name: "OAuth", icon: <SiAuth0 /> },
+          { name: "NextAuth.js", icon: <SiAuth0 /> },
+          { name: "Firebase Auth", icon: <SiFirebase /> },
         ],
       },
       {
@@ -321,6 +358,7 @@ const Portfolio = () => {
           { name: "Git", icon: <SiGit /> },
           { name: "GitHub", icon: <SiGithub /> },
           { name: "Figma", icon: <SiFigma /> },
+          { name: "Post Man", icon: <SiPostman /> },
           { name: "Thander Client", icon: <FaBolt /> },
         ],
       },
@@ -353,8 +391,8 @@ const Portfolio = () => {
     const sections = [
       "home",
       "about",
-      "skills",
       "projects",
+      "skills",
       "education",
       "contact",
     ];
@@ -388,7 +426,7 @@ const Portfolio = () => {
   }
 
   return (
-    <div className="bg-slate-950 text-slate-300 min-h-screen font-sans selection:bg-emerald-500/30">
+    <div className="overflow-x-hidden bg-slate-950 text-slate-300 min-h-screen font-sans selection:bg-emerald-500/30">
       {/* --- Navbar --- */}
       <nav className="fixed top-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50 z-50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -405,8 +443,8 @@ const Portfolio = () => {
             {[
               "home",
               "about",
-              "skills",
               "projects",
+              "skills",
               "education",
               "contact",
             ].map((item) => (
@@ -483,7 +521,11 @@ const Portfolio = () => {
               </span>
               Available for Hire
             </motion.div>
-
+            <p className="text-slate-400 text-lg max-w-lg mb-10 leading-relaxed">
+              Hi, I'm <span className="text-white font-bold">{data.name}</span>.
+              I build modern, scalable, and user-friendly web applications with
+              clean code and thoughtful design.
+            </p>
             <h1 className="text-4xl font-black text-white leading-[1.1] mb-6 tracking-tighter">
               Full{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 italic">
@@ -504,11 +546,6 @@ const Portfolio = () => {
                 </motion.p>
               </AnimatePresence>
             </div>
-
-            <p className="text-slate-400 text-lg max-w-lg mb-10 leading-relaxed">
-              I'm <span className="text-white font-bold">{data.name}</span>. I
-              build robust, scalable, and visually stunning web applications.
-            </p>
 
             {/* BUTTONS */}
             <motion.div
@@ -545,12 +582,12 @@ const Portfolio = () => {
             <FloatingIcon
               icon={<SiReact className="text-cyan-400" />}
               delay={0}
-              position="top-0 -left-5"
+              position="top-0 -left-15"
             />
             <FloatingIcon
               icon={<SiNextdotjs className="text-white" />}
               delay={0}
-              position="-top-30 left-30"
+              position="-top-40 left-50"
             />
             <FloatingIcon
               icon={<SiCss3 className="text-blue-500" />}
@@ -560,37 +597,52 @@ const Portfolio = () => {
             <FloatingIcon
               icon={<SiNodedotjs className="text-emerald-500" />}
               delay={1}
-              position="-top-10 right-0"
+              position="-top-20 right-0"
             />
             <FloatingIcon
               icon={<SiTailwindcss className="text-sky-400" />}
               delay={1}
-              position="top-45 right-140"
+              position="top-30 right-150"
             />
             <FloatingIcon
               icon={<SiMongodb className="text-emerald-500" />}
               delay={2}
-              position="bottom-0 -left-5"
+              position="-bottom-15 -left-5"
+            />
+            <FloatingIcon
+              icon={<SiPrisma className="text-white" />}
+              delay={1.9}
+              position="top-70 -left-15"
             />
             <FloatingIcon
               icon={<SiExpress className="text-white" />}
               delay={2}
-              position="-bottom-25 left-35"
+              position="-bottom-25 left-45"
+            />
+            <FloatingIcon
+              icon={<SiPostgresql className="text-sky-500" />}
+              delay={1.7}
+              position="bottom-115 left-15"
             />
             <FloatingIcon
               icon={<SiJavascript className="text-yellow-400" />}
               delay={1.5}
-              position="bottom-10 right-0"
+              position="bottom-2 right-0"
             />
             <FloatingIcon
               icon={<SiFirebase className="text-yellow-400" />}
               delay={1.5}
-              position="-bottom-20 right-35"
+              position="-bottom-20 right-45"
             />
             <FloatingIcon
               icon={<FaHtml5 className="text-orange-500" />}
               delay={1.5}
-              position="bottom-45 left-140"
+              position="bottom-65 left-140"
+            />
+            <FloatingIcon
+              icon={<SiTypescript className="text-blue-500" />}
+              delay={1.5}
+              position="bottom-30 left-140"
             />
 
             {/* IMAGE FLOAT ANIMATION */}
@@ -620,6 +672,7 @@ const Portfolio = () => {
           </motion.div>
         </div>
       </header>
+
       {/* About Section */}
 
       <section
@@ -658,11 +711,12 @@ const Portfolio = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Hello! 👋 I'm{" "}
-            <span className="text-blue-400 font-semibold">{data.name}</span>, I
-            started my web development journey out of curiosity, and now I truly
-            enjoy building responsive and functional websites. I'm passionate
-            about learning and growing every day as a developer.
+            I'm a passionate Full Stack Developer who enjoys building modern,
+            responsive, and user-friendly web applications. I work with
+            technologies like React, Next.js, Node.js, Express.js, and
+            TypeScript to create meaningful digital experiences. I'm always
+            eager to learn new technologies, solve problems, and grow as a
+            developer.
           </motion.p>
 
           {/* Tagline */}
@@ -689,12 +743,20 @@ const Portfolio = () => {
               whileHover={{ y: -8, scale: 1.02 }}
             >
               <h3 className="text-white text-xl font-bold mb-4">Who I Am</h3>
-              <ul className="text-slate-400 space-y-2">
-                <li>• MERN Stack developer with a love for clean UI.</li>
+
+              <ul className="text-slate-400 space-y-3">
                 <li>
-                  • React and Next.js is my comfort zone for building apps.
+                  • Passionate Full Stack Developer focused on clean,
+                  maintainable code.
                 </li>
-                <li>• I keep learning and improving every day.</li>
+                <li>
+                  • Building modern web applications with React, Next.js,
+                  Node.js, and Express.js.
+                </li>
+                <li>
+                  • Always learning, solving problems, and improving my
+                  development skills.
+                </li>
               </ul>
             </motion.div>
 
@@ -708,14 +770,32 @@ const Portfolio = () => {
               whileHover={{ y: -8, scale: 1.02 }}
             >
               <h3 className="text-white text-xl font-bold mb-4">What I Do</h3>
-              <ul className="text-slate-400 space-y-2">
+
+              <ul className="space-y-3 text-slate-400">
                 <li>
-                  • Build responsive sites with HTML, CSS, JS, React, Next.js.
+                  • I'm Haridas Sarker, a passionate Full Stack Developer.
                 </li>
                 <li>
-                  • Use backend tools like Node, MongoDB, Firebase, NextAuth.
+                  • Started coding out of curiosity and developed a passion for
+                  building modern, responsive, and user-friendly web
+                  applications.
                 </li>
-                <li>• Create projects to practice and grow skills.</li>
+                <li>
+                  • Enjoy solving problems, exploring new technologies, and
+                  creating meaningful digital experiences.
+                </li>
+                <li>
+                  • Work with React, Next.js, Node.js, Express.js, JavaScript
+                  and TypeScript to build web applications.
+                </li>
+                <li>
+                  • Believe in continuous learning, self-improvement, and
+                  turning ideas into real-world solutions.
+                </li>
+                <li>
+                  • Aim to grow as a Software Engineer, collaborate with
+                  talented developers, and build impactful applications.
+                </li>
               </ul>
             </motion.div>
 
@@ -729,10 +809,20 @@ const Portfolio = () => {
               whileHover={{ y: -8, scale: 1.02 }}
             >
               <h3 className="text-white text-xl font-bold mb-4">My Goals</h3>
+
               <ul className="text-slate-400 space-y-2">
-                <li>• Become a full-stack developer with real impact.</li>
-                <li>• Work with a strong tech team on real projects.</li>
-                <li>• Get a dev job and grow step by step.</li>
+                <li>
+                  • Build impactful web applications that solve real-world
+                  problems.
+                </li>
+                <li>
+                  • Collaborate with talented developers and contribute to
+                  real-world projects.
+                </li>
+                <li>
+                  • Grow into a skilled Software Engineer through continuous
+                  learning and experience.
+                </li>
               </ul>
             </motion.div>
 
@@ -748,31 +838,23 @@ const Portfolio = () => {
               <h3 className="text-white text-xl font-bold mb-4">
                 My Philosophy
               </h3>
+
               <ul className="text-slate-400 space-y-2">
-                <li>• Code should solve problems, not create them.</li>
-                <li>• Keep it simple, clean, and easy to maintain.</li>
-                <li>• Learning never stops in tech — keep going.</li>
+                <li>
+                  • Write code that solves real problems and delivers value.
+                </li>
+                <li>
+                  • Prioritize clean, simple, readable, and maintainable code.
+                </li>
+                <li>
+                  • Embrace continuous learning, feedback, and improvement.
+                </li>
               </ul>
             </motion.div>
           </div>
         </div>
       </section>
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 scroll-mt-20">
-        <div className="max-w-7xl mx-auto text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
-            Technical Skills
-          </h2>
-          <p className="text-slate-400 mt-6">
-            My technical toolkit for building fast and efficient web solutions.
-          </p>
-        </div>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-          {data.skillsCategories.map((cat, index) => (
-            <SkillCard key={index} cat={cat} index={index} />
-          ))}
-        </div>
-      </section>
+
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6 bg-slate-950 scroll-mt-20">
         <div className="max-w-7xl mx-auto text-center mb-20">
@@ -877,6 +959,24 @@ const Portfolio = () => {
           ))}
         </div>
       </section>
+      
+      {/* Skills */}
+      <section id="skills" className="py-20 px-6 scroll-mt-20">
+        <div className="max-w-7xl mx-auto text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-emerald-500 text-center mb-5">
+            Technical Skills
+          </h2>
+          <p className="text-slate-400 mt-6">
+            My technical toolkit for building fast and efficient web solutions.
+          </p>
+        </div>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+          {data.skillsCategories.map((cat, index) => (
+            <SkillCard key={index} cat={cat} index={index} />
+          ))}
+        </div>
+      </section>
+
       {/* --- Education Section --- */}
       <section id="education" className="py-20 px-6 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
@@ -1091,25 +1191,28 @@ const Portfolio = () => {
 
               {/* Buttons */}
               <div className="flex flex-wrap gap-4">
+                {/* Email */}
                 <motion.a
-                  href={`mailto:${data.email}`}
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=horidassarker6@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 transition text-white rounded-xl font-bold flex items-center gap-2 shadow-lg"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <FaEnvelope /> Email Me
+                  <FaEnvelope />
+                  Email Me
                 </motion.a>
 
+                {/* Mobile Call */}
                 <motion.a
-                  href="https://wa.me/880XXXXXXXXXX"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-slate-900 border border-slate-800 hover:border-emerald-500 transition text-white rounded-xl font-bold flex items-center gap-2"
+                  href="tel:+8801816553754"
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-500 transition text-white rounded-xl font-bold flex items-center gap-2 shadow-lg"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <FaWhatsapp /> WhatsApp
+                  <FaPhoneAlt />
+                  Call Me
                 </motion.a>
               </div>
-
               {/* Social Cards */}
               <div className="grid grid-cols-2 gap-3 pt-6">
                 {[
@@ -1129,9 +1232,9 @@ const Portfolio = () => {
                     label: "Facebook",
                   },
                   {
-                    icon: <FaWhatsapp size={18} />,
-                    url: "https://wa.me/880XXXXXXXXXX",
-                    label: "WhatsApp",
+                    icon: <FaInstagram size={18} />,
+                    url: "https://www.instagram.com",
+                    label: "Instagram",
                   },
                 ].map((soc, i) => (
                   <motion.a
